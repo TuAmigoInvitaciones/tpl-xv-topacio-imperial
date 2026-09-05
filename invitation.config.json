@@ -1,0 +1,223 @@
+{
+  "eventType": "xv",
+  "packageTier": "oro",
+  "commercial": {
+    "packageName": "Oro VIP Premium (Con Fotos)",
+    "basePrice": 1099.99,
+    "ticketPrice": 1800,
+    "addonsPrice": 0,
+    "totalPrice": 2899.99
+  },
+  "theme": {
+    "fontPack": 1,
+    "palette": 8
+  },
+  "ui": {
+    "menu": {
+      "show": true,
+      "variant": "bar",
+      "title": "Michelle Carreón",
+      "buttonVariant": "icon"
+    },
+    "music": {
+      "show": true,
+      "variant": "floating",
+      "title": "Música de Fondo",
+      "buttonVariant": "primary"
+    }
+  },
+  "config": {
+    "hasTicketingSystem": true,
+    "hasRSVP": true,
+    "hasMusic": true,
+    "hasMenu": true
+  },
+  "sections": {
+    "envelope": {
+      "showenvelope": true,
+      "type": "video-apertura"
+    },
+    "hero": {
+      "showHero": true,
+      "names": "Michelle Carreón",
+      "subtitle": "Mis XV Años",
+      "date": "26 DE DICIEMBRE DE 2026",
+      "city": "Aguascalientes, México"
+    },
+    "scratchReveal": {
+      "showScratchReveal": true
+    },
+    "message": {
+      "showMessage": true,
+      "message": "La vida se mide en los momentos que dejan huella, y este día no estaría completo sin ti. Acompáñanos a celebrar y a crear recuerdos que guardaremos para siempre.",
+      "quote": "Disfruta de los momentos especiales de la vida, porque al final, los recuerdos son lo único que nos llevamos."
+    },
+    "family": {
+      "showFamily": true,
+      "title": "Mis Padres y Padrinos",
+      "parents": [
+        "Alejandro Sánchez",
+        "Isela Carreón"
+      ],
+      "godparents": [
+        "Danna Janeth",
+        "Saulo Román"
+      ]
+    },
+    "places": {
+      "showPlaces": true,
+      "locations": [
+        {
+          "title": "Ceremonia Religiosa",
+          "venue": "Parroquia de la Divina Misericordia de Nuestro Señor Jesucristo",
+          "location": "Uxmal 407, Morelos, 20264 Aguascalientes, Ags.",
+          "time": "18:00 HRS",
+          "date": "26-12-2026",
+          "url": "https://maps.app.goo.gl/BF38WvBnbmk88KxU8"
+        },
+        {
+          "title": "Recepción",
+          "venue": "Lago del Marqués",
+          "location": "Hacienda Nueva, San Ignacio, 20326 Aguascalientes, Ags.",
+          "time": "20:00 HRS",
+          "date": "26-12-2026",
+          "url": "https://maps.app.goo.gl/hSZKfNWHFSKvBYZg6"
+        }
+      ]
+    },
+    "itinerary": {
+      "showItinerary": true,
+      "itinerary": [
+        {
+          "time": "18:00 HRS",
+          "event": "Ceremonia Religiosa"
+        },
+        {
+          "time": "20:00 HRS",
+          "event": "Recepción de Invitados"
+        },
+        {
+          "time": "21:00 HRS",
+          "event": "Coctél de Bienvenida"
+        },
+        {
+          "time": "22:00 HRS",
+          "event": "Cena (3 tiempos)"
+        },
+        {
+          "time": "22:30 HRS",
+          "event": "Vals Quinceañera"
+        },
+        {
+          "time": "23:00 HRS",
+          "event": "Apertura de pista"
+        },
+        {
+          "time": "01:00 HRS",
+          "event": "Música Banda"
+        },
+        {
+          "time": "02:00 HRS",
+          "event": "Fin del Evento"
+        }
+      ]
+    },
+    "dressCode": {
+      "showDressCode": true,
+      "title": "Código de Vestimenta",
+      "description": "Te invitamos a lucir tus mejor atuendo. Etiqueta Formal.",
+      "attire": {
+        "men": "Traje/Smoking oscuro y corbata",
+        "women": "Vestido largo o de noche."
+      },
+      "colors": {
+        "suggested": [
+          "negro",
+          "azul marino"
+        ],
+        "avoid": [
+          "blanco",
+          "beige"
+        ]
+      }
+    },
+    "details": {
+      "showDetails": true,
+      "title": "Detalles Importantes",
+      "noKids": true,
+      "noKidsMessage": "Evento exclusivo para adultos. Gracias por tu comprensión.",
+      "punctuality": true,
+      "punctualityMessage": "Te sugerimos llegar con 15 minutos de anticipación para no perderte ningún momento.",
+      "hashtag": "#MichelleCarreonXV"
+    },
+    "presents": {
+      "showPresents": true,
+      "title": "Mesa de Regalos",
+      "url": "https://mesaderegalos.liverpool.com.mx",
+      "bankDetails": {
+        "bank": "BBVA",
+        "holder": "Alejandor Carreón",
+        "clabe": "012180012345678901",
+        "account": "1234567890"
+      },
+      "envelopeRain": true
+    },
+    "confirmation": {
+      "showConfirmation": true,
+      "type": "abrasa",
+      "isQuantityFree": true,
+      "whatsappPhone": "",
+      "whatsappMessage": ""
+    },
+    "graduates": {
+      "showGraduates": false
+    },
+    "gallery": {
+      "showGallery": true,
+      "title": "Galería de Fotos",
+      "variant": "mosaic",
+      "maxPhotos": 6
+    },
+    "guestPhotos": {
+      "showGuestPhotos": true,
+      "title": "Fotos de los Invitados",
+      "subtitle": "Comparte tus recuerdos y momentos de la fiesta con nosotros"
+    },
+    "ticket": {
+      "showTicket": true
+    },
+    "addons": {
+      "lodgingAndWeather": {
+        "showLodging": false,
+        "title": "Hospedaje & Clima",
+        "hotels": [],
+        "weatherCity": "Aguascalientes"
+      },
+      "ourStory": {
+        "showOurStory": false,
+        "title": "Nuestra Historia",
+        "quoteOrPoem": "Por encima de todo, vístanse de amor.",
+        "timeline": []
+      },
+      "faqAndMenu": {
+        "showFaqAndMenu": false,
+        "title": "Preguntas Frecuentes & Menú",
+        "faqs": [],
+        "menuCourses": []
+      },
+      "playlistAndPhotos": {
+        "showPlaylistAndPhotos": true,
+        "title": "Música & Fotos de Invitados"
+      },
+      "monogram": {
+        "showMonogram": true,
+        "title": "Monograma del Evento"
+      }
+    },
+    "farewell": {
+      "showFarewell": true,
+      "hashtag": "#MichelleCarreonXV",
+      "thankYouMessage": "Gracias por ser parte fundamental de mi vida y acompañarme en este día tan especial."
+    }
+  }
+}
