@@ -412,3 +412,119 @@
 .delay-5 {
     animation-delay: 0.75s;
 }
+
+/* --------------------------------------------------------------------------
+   8. Keyframes - Hero Section Animations
+   -------------------------------------------------------------------------- */
+
+// Zoom suave cinematográfico de la fotografía
+@keyframes heroImageCinematic {
+    0% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// Desvanecido suave inferior
+@keyframes heroFadeEntrance {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// Entrada con caída elegante del banner superior
+@keyframes heroBannerEntrance {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-40px) scale(0.88);
+        filter: drop-shadow(0 0 0 rgba(217, 183, 82, 0));
+    }
+    65% {
+        transform: translateX(-50%) translateY(4px) scale(1.03);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+        filter: drop-shadow(0 4px 14px rgba(217, 183, 82, 0.3));
+    }
+}
+
+// Flotado continuo con halo dorado del banner
+@keyframes heroBannerFloat {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        filter: drop-shadow(0 4px 12px rgba(217, 183, 82, 0.25));
+    }
+    50% {
+        transform: translateX(-50%) translateY(-7px) scale(1.01);
+        filter: drop-shadow(0 10px 24px rgba(217, 183, 82, 0.5));
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        filter: drop-shadow(0 4px 12px rgba(217, 183, 82, 0.25));
+    }
+}
+
+// Entrada del contenedor de texto
+@keyframes heroContainerEntrance {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(25px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+// Entrada escalonada de las palabras del nombre
+@keyframes heroWordEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.94);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+// Salto regio con destello dorado de las letras iniciales
+@keyframes heroInitialPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.4) translateY(12px);
+        filter: drop-shadow(0 0 0 rgba(217, 183, 82, 0));
+    }
+    60% {
+        transform: scale(1.18) translateY(-4px);
+        filter: drop-shadow(0 0 16px rgba(255, 235, 150, 0.9));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    }
+}
+
+// Destello dorado periódico en el nombre
+@keyframes heroTitleGleam {
+    0%, 82%, 100% {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        filter: brightness(1);
+    }
+    90% {
+        text-shadow: 
+            0 0 24px rgba(255, 235, 160, 0.85),
+            0 0 12px rgba(217, 183, 82, 0.6),
+            0 2px 10px rgba(0, 0, 0, 0.25);
+        filter: brightness(1.22);
+    }
+}
