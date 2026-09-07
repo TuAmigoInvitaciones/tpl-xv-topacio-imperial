@@ -1,1 +1,19 @@
-.message {}
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.message-section {
+    margin-top: -1rem;
+    padding: 6rem 0;
+    background-color: vars.$color-secondary-200;
+
+    &__container {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    &__text {
+        text-align: center;
+        font-family: vars.$font-serif;
+        font-size: 1.6rem;
+    }
+}

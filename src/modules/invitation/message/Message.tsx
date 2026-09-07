@@ -1,5 +1,6 @@
 import React from 'react'
 import { useInvitationConfig } from '@/common/hooks'
+import { SectionHeader } from '@/common/components/section-header/SectionHeader'
 
 export const MessageSection: React.FC = () => {
     const { sections } = useInvitationConfig()
@@ -14,6 +15,13 @@ export const MessageSection: React.FC = () => {
     return (
         <section id="message" className="message-section">
             <div className="message-section__container">
+                <div className="message-section__header">
+                    <SectionHeader
+                        pretitle='Estás Invitado'
+                        title='A mis XV Años'
+                        align='center'
+                    />
+                </div>
                 {messageText && <p className="message-section__text">{messageText}</p>}
             </div>
         </section>
