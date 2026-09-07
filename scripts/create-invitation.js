@@ -1,4 +1,4 @@
-﻿import fs from 'fs'
+import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
@@ -75,7 +75,22 @@ async function main() {
 
         closePrompts()
 
-        printHeader('â³ CREANDO PROYECTO Y COMPILANDO CONFIGURACIÃ“N...')
+        let formattedIsoDate = '2026-11-20'
+        if (heroData.eventDateRaw) {
+            const parts = heroData.eventDateRaw.split(/[-/]/)
+            if (parts.length === 3) {
+                if (parts[0].length === 4) {
+                    formattedIsoDate = `${parts[0]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}`
+                } else if (parts[2].length === 4) {
+                    formattedIsoDate = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`
+                }
+            }
+        }
+        const firstTime = placesItineraryData.places?.locations?.[0]?.time || '18:00 HRS'
+        const [hour = '18', minute = '00'] = firstTime.replace(/[^0-9:]/g, '').split(':')
+        const paddedHour = hour.padStart(2, '0')
+        const paddedMinute = minute.padStart(2, '0')
+        const targetDateIso = `${formattedIsoDate}T${paddedHour}:${paddedMinute}:00`
 
         const finalConfigManifest = {
             eventType: packageData.eventType,
@@ -99,6 +114,10 @@ async function main() {
                     showScratchReveal: Boolean(packageData.sectionToggles.showScratchReveal),
                 },
                 message: messageFamilyData.message,
+                countdown: {
+                    showCountdown: true,
+                    targetDate: targetDateIso,
+                },
                 family: messageFamilyData.family,
                 places: placesItineraryData.places,
                 itinerary: placesItineraryData.itinerary,

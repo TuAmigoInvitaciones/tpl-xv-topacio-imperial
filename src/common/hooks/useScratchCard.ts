@@ -4,7 +4,7 @@ import { useConfetti } from './useConfetti'
 export interface UseScratchCardOptions {
     brushSize?: number
     revealPercent?: number
-    shape?: 'heart' | 'rect'
+    shape?: 'heart' | 'rect' | 'circle'
     foilColor?: string
     confettiParticleCount?: number
     confettiColors?: string[]
@@ -37,12 +37,20 @@ export const useScratchCard = ({
         if (!container || !canvas) return
 
         const rect = container.getBoundingClientRect()
-        const width = rect.width || 300
-        const height = rect.height || 260
+        let width = rect.width || container.offsetWidth || 100
+        let height = rect.height || container.offsetHeight || width || 100
+
+        if (shape === 'circle') {
+            const side = Math.max(width, height)
+            width = side
+            height = side
+        }
 
         const dpr = window.devicePixelRatio || 1
         canvas.width = width * dpr
         canvas.height = height * dpr
+        canvas.style.width = '100%'
+        canvas.style.height = '100%'
 
         const ctx = canvas.getContext('2d')
         if (!ctx) return
@@ -87,10 +95,24 @@ export const useScratchCard = ({
             )
             ctx.closePath()
             ctx.clip()
+        } else if (shape === 'circle') {
+            ctx.beginPath()
+            const radius = width / 2
+            ctx.arc(width / 2, height / 2, radius + 1, 0, Math.PI * 2)
+            ctx.closePath()
+            ctx.clip()
         }
 
         const isWhiteOrDefault = foilColor === 'white' || !foilColor
-        if (isWhiteOrDefault) {
+        if (foilColor === 'gold') {
+            const gradient = ctx.createLinearGradient(0, 0, width, height)
+            gradient.addColorStop(0, '#F5D77F')
+            gradient.addColorStop(0.25, '#FFF6C2')
+            gradient.addColorStop(0.5, '#D4AF37')
+            gradient.addColorStop(0.75, '#F9E596')
+            gradient.addColorStop(1, '#AA771C')
+            ctx.fillStyle = gradient
+        } else if (isWhiteOrDefault) {
             const gradient = ctx.createLinearGradient(0, 0, width, height)
             gradient.addColorStop(0, '#fef7f5')
             gradient.addColorStop(0.5, '#f9ebe6')
@@ -100,9 +122,29 @@ export const useScratchCard = ({
             ctx.fillStyle = foilColor
         }
 
-        if (shape === 'rect') {
-            ctx.fillRect(0, 0, width, height)
-        } else {
+        ctx.fillRect(0, 0, width, height)
+
+        if (shape === 'circle' && foilColor === 'gold') {
+            // Anillo exterior brillante
+            ctx.lineWidth = 1.5
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.65)'
+            ctx.beginPath()
+            ctx.arc(width / 2, height / 2, (width / 2) - 4, 0, Math.PI * 2)
+            ctx.stroke()
+
+            // Anillo interior sutil
+            ctx.lineWidth = 1
+            ctx.strokeStyle = 'rgba(170, 119, 28, 0.35)'
+            ctx.beginPath()
+            ctx.arc(width / 2, height / 2, (width / 2) - 8, 0, Math.PI * 2)
+            ctx.stroke()
+
+            // Destello sutil central estilo moneda
+            const cx = width / 2
+            const cy = height / 2
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.45)'
+            ctx.beginPath()
+            ctx.arc(cx, cy, 2.5, 0, Math.PI * 2)
             ctx.fill()
         }
 
@@ -110,16 +152,21 @@ export const useScratchCard = ({
     }, [foilColor, shape])
 
     useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+
         initCanvas()
 
-        const handleResize = () => {
-            if (!isRevealed) {
-                initCanvas()
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.contentRect.width > 0 && entry.contentRect.height > 0 && !isRevealed) {
+                    initCanvas()
+                }
             }
-        }
+        })
 
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
+        resizeObserver.observe(container)
+        return () => resizeObserver.disconnect()
     }, [initCanvas, isRevealed])
 
     const getPos = (e: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent) => {
@@ -182,8 +229,20 @@ export const useScratchCard = ({
         let transparentCount = 0
         let totalSamples = 0
 
+        const centerX = width / 2
+        const centerY = height / 2
+        const radius = Math.min(width, height) / 2
+        const radiusSq = radius * radius
+
         for (let y = 0; y < height; y += sampleStep) {
             for (let x = 0; x < width; x += sampleStep) {
+                if (shape === 'circle') {
+                    const dx = x - centerX
+                    const dy = y - centerY
+                    if (dx * dx + dy * dy > radiusSq) {
+                        continue
+                    }
+                }
                 const index = (y * width + x) * 4
                 const alpha = pixels[index + 3]
                 if (alpha < 128) {
@@ -206,7 +265,7 @@ export const useScratchCard = ({
                 onReveal()
             }
         }
-    }, [isRevealed, revealPercent, confettiParticleCount, confettiColors, onReveal, fireConfetti])
+    }, [isRevealed, revealPercent, confettiParticleCount, confettiColors, onReveal, fireConfetti, shape])
 
     const startScratch = (e: React.MouseEvent | React.TouchEvent) => {
         if (disabled || isRevealed) return

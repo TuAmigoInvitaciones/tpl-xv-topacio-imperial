@@ -52,6 +52,10 @@
       "message": "La vida se mide en los momentos que dejan huella, y este día no estaría completo sin ti. Acompáñanos a celebrar y a crear recuerdos que guardaremos para siempre.",
       "quote": "Disfruta de los momentos especiales de la vida, porque al final, los recuerdos son lo único que nos llevamos."
     },
+    "countdown": {
+      "showCountdown": true,
+      "targetDate": "2026-12-26T18:00:00"
+    },
     "family": {
       "showFamily": true,
       "title": "Mis Padres y Padrinos",

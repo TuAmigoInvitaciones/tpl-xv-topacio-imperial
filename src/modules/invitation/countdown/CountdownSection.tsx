@@ -1,57 +1,132 @@
 import React from 'react'
-import { useInvitationConfig, useCalendar } from '@/common/hooks'
 import { SectionHeader } from '@/common/components/section-header/SectionHeader'
 import { Countdown } from '@/common/components/countdown/Countdown'
+import { ScratchCard } from '@/common/components/scratch-card/ScratchCard'
+import { useCountdownSection } from './useCountdownSection'
+
+import decoration from '@/assets/images/icons/countdown-flowers-1.svg'
+import decoration2 from '@/assets/images/icons/countdown-flowers-2.svg'
+import photo from '@/assets/images/photos/8.jpg'
 
 export const CountdownSection: React.FC = () => {
-    const { sections } = useInvitationConfig()
-    const countdownConfig = sections.countdown
-    const { monthTitle, weekdays, days } = useCalendar()
+    const {
+        sectionRef,
+        countdownConfig,
+        dayStr,
+        monthStr,
+        yearStr,
+        handleReveal,
+    } = useCountdownSection()
 
     if (!countdownConfig?.showCountdown || !countdownConfig?.targetDate) {
         return null
     }
 
     return (
-        <section id="countdown" className="countdown-section">
-            <div className="countdown-section__container">
-                <SectionHeader
-                    pretitle="CUENTA REGRESIVA"
-                    title="Fecha Especial"
-                    align="center"
-                    variant="uppercase"
-                />
-
-                <div className="countdown-section__content">
-                    <Countdown
-                        targetDate={countdownConfig.targetDate}
-                        variant="minimal"
+        <>
+            <section id="countdown" ref={sectionRef} className="countdown-section">
+                <div className="countdown-section__decoration countdown-section__decoration--1">
+                    <img
+                        src={decoration}
+                        alt="Decoración"
                     />
                 </div>
 
-                <div className="countdown-section__calendar">
-                    {monthTitle && <p className="countdown-section__calendar-title">{monthTitle}</p>}
-                    <div className="countdown-section__calendar-grid">
-                        {weekdays.map(day => (
-                            <div key={day} className="countdown-section__calendar-head">
-                                {day}
+                <div className="countdown-section__decoration countdown-section__decoration--2">
+                    <img
+                        src={decoration2}
+                        alt="Decoración"
+                    />
+                </div>
+
+                <div className="countdown-section__container">
+                    <SectionHeader
+                        pretitle="Cuenta Regresiva"
+                        title="Fecha Especial"
+                        align="center"
+                    />
+
+                    <p className="countdown-section__instruction">
+                        Rasca sobre los círculos dorados y descubre el día en que celebraremos juntos este gran sueño.
+                    </p>
+
+                    <div className="countdown-section__date">
+                        <div className="countdown-section__box">
+                            <div className="countdown-section__circle-container">
+                                <ScratchCard
+                                    shape="circle"
+                                    foilColor="gold"
+                                    brushSize={16}
+                                    revealPercent={38}
+                                    overlayText=""
+                                    className="countdown-section__scratch"
+                                    confettiParticleCount={120}
+                                    confettiColors={['#D4AF37', '#FFD700', '#F3E5AB', '#FFFFFF']}
+                                    onReveal={() => handleReveal('day')}
+                                >
+                                    <div className="countdown-section__card-content">
+                                        <span className="countdown-section__number">{dayStr}</span>
+                                    </div>
+                                </ScratchCard>
                             </div>
-                        ))}
-                        {days.map(dayItem => (
-                            <div
-                                key={dayItem.id}
-                                className={[
-                                    'countdown-section__calendar-day',
-                                    dayItem.isFeatured ? 'countdown-section__calendar-day--featured' : '',
-                                    !dayItem.isCurrentMonth ? 'countdown-section__calendar-day--muted' : '',
-                                ].filter(Boolean).join(' ')}
-                            >
-                                <span className="countdown-section__calendar-num">{dayItem.dayNumber}</span>
+                            <span className="countdown-section__box-label">Día</span>
+                        </div>
+
+                        <div className="countdown-section__box">
+                            <div className="countdown-section__circle-container">
+                                <ScratchCard
+                                    shape="circle"
+                                    foilColor="gold"
+                                    brushSize={16}
+                                    revealPercent={38}
+                                    overlayText=""
+                                    className="countdown-section__scratch"
+                                    confettiParticleCount={120}
+                                    confettiColors={['#D4AF37', '#FFD700', '#F3E5AB', '#FFFFFF']}
+                                    onReveal={() => handleReveal('month')}
+                                >
+                                    <div className="countdown-section__card-content">
+                                        <span className="countdown-section__number">{(monthStr === '12') ? 'DIC' : monthStr}</span>
+                                    </div>
+                                </ScratchCard>
                             </div>
-                        ))}
+                            <span className="countdown-section__box-label">Mes</span>
+                        </div>
+
+                        <div className="countdown-section__box">
+                            <div className="countdown-section__circle-container">
+                                <ScratchCard
+                                    shape="circle"
+                                    foilColor="gold"
+                                    brushSize={16}
+                                    revealPercent={38}
+                                    overlayText=""
+                                    className="countdown-section__scratch"
+                                    confettiParticleCount={120}
+                                    confettiColors={['#D4AF37', '#FFD700', '#F3E5AB', '#FFFFFF']}
+                                    onReveal={() => handleReveal('year')}
+                                >
+                                    <div className="countdown-section__card-content">
+                                        <span className="countdown-section__number">{yearStr}</span>
+                                    </div>
+                                </ScratchCard>
+                            </div>
+                            <span className="countdown-section__box-label">Año</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <div className="countdown-section__countdown">
+                <div className="countdown-section__overlay"></div>
+                <div className="countdown-section__photo">
+                    <img src={photo} alt="Foto de la Quinceañera" />
+                </div>
+                <Countdown
+                    className='countdown-section__timer'
+                    targetDate={countdownConfig.targetDate}
+                    variant="glass"
+                />
+            </div >
+        </>
     )
 }

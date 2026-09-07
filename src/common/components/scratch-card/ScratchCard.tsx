@@ -26,10 +26,13 @@ export const ScratchCard: React.FC<ScratchCardProps> = ({
         stopScratch,
     } = useScratchCard(options)
 
+    const shapeClass = options.shape ? `scratch-card--${options.shape}` : ''
+    const foilClass = options.foilColor ? `scratch-card--${options.foilColor}` : ''
+
     return (
         <div
             ref={containerRef}
-            className={`scratch-card ${className}`}
+            className={`scratch-card ${shapeClass} ${foilClass} ${className}`.trim()}
             style={style}
         >
             <div className="scratch-card__content">{children}</div>

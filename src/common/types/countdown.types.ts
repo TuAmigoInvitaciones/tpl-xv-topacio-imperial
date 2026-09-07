@@ -1,4 +1,4 @@
-export type CountdownVariant = 'boxes' | 'circles' | 'inline' | 'grid-2x2' | 'minimal' | 'cards'
+export type CountdownVariant = 'boxes' | 'circles' | 'inline' | 'grid-2x2' | 'minimal' | 'cards' | 'glass'
 
 export interface CountdownLabels {
     days?: string
