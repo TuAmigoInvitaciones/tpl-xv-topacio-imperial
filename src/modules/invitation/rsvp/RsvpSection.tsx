@@ -112,14 +112,11 @@ export const RsvpSection: React.FC = () => {
                                         <Button
                                             variant="secondary"
                                             size="md"
-                                            radius="none"
-                                            className="rsvp__card-btn"
+                                            radius="full"
+                                            icon={<LinkIcon size={20} weight='thin' />}
                                             onClick={() => goTo('/ticket')}
                                         >
-                                            <div className="rsvp__card-btn__container">
-                                                <LinkIcon size={20} weight='thin' />
-                                                <p>Ver boletos</p>
-                                            </div>
+                                            Ver boletos
                                         </Button>
                                     </motion.div>
                                 </div>

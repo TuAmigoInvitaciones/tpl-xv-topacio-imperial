@@ -127,7 +127,7 @@ export const CountdownSection: React.FC = () => {
                             onClick={() => downloadSaveTheDate()}
                             className="countdown-section__btn"
                         >
-                            SAVE THE DATE
+                            Guardar Recordatorio
                         </Button>
                     </div>
                 </div>
