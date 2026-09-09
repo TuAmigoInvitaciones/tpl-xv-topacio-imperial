@@ -8,10 +8,17 @@ export const useCountdownSection = () => {
 
     const [revealed, setRevealed] = useState({ day: false, month: false, year: false })
     const [isScrollLocked, setIsScrollLocked] = useState(false)
-    const [hasArrived, setHasArrived] = useState(false)
+    // const [hasArrived, setHasArrived] = useState(false)
 
     const allRevealed = revealed.day && revealed.month && revealed.year
 
+    // Temporalmente deshabilitado en desarrollo para no bloquear el scroll:
+    useEffect(() => {
+        document.body.style.overflow = ''
+        document.documentElement.style.overflow = ''
+    }, [])
+
+    /*
     // Bloquear scroll al llegar a la sección si no se han revelado todas las boxes
     useEffect(() => {
         if (allRevealed || hasArrived) {
@@ -87,6 +94,7 @@ export const useCountdownSection = () => {
             window.removeEventListener('keydown', handleKeyDown)
         }
     }, [isScrollLocked])
+    */
 
     const handleReveal = (field: 'day' | 'month' | 'year') => {
         setRevealed(prev => {

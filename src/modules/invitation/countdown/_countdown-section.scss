@@ -3,7 +3,7 @@
 
 .countdown-section {
     padding: 12rem 0;
-    background-color: vars.$color-1-100;
+    background-color: white;
     position: relative;
     overflow: hidden;
 
@@ -25,7 +25,7 @@
         }
 
         &--2 {
-            bottom: 0;
+            bottom: -5%;
             right: -5%;
         }
     }
@@ -148,6 +148,56 @@
         letter-spacing: 0.18em;
         color: vars.$color-secondary-700;
         opacity: 0.9;
+    }
+
+    &__button {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .countdown-section__btn {
+            width: 80%;
+            padding: 1.2rem 2.4rem;
+            font-size: 1.3rem;
+
+            .btn__icon svg,
+            .countdown-section__btn-icon {
+                width: 2.2rem;
+                height: 2.2rem;
+            }
+        }
+
+        @include mix.respondToMin('sm') {
+            .countdown-section__btn {
+                width: 32rem;
+                padding: 1.4rem 2.8rem;
+                font-size: 1.45rem;
+
+                .btn__icon svg,
+                .countdown-section__btn-icon {
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+            }
+        }
+
+        @include mix.respondToMin('md') {
+            margin-top: 3rem;
+
+            .countdown-section__btn {
+                width: 42rem;
+                padding: 1.8rem 3.6rem;
+                font-size: 1.75rem;
+
+                .btn__icon svg,
+                .countdown-section__btn-icon {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                }
+            }
+        }
     }
 
     &__content {

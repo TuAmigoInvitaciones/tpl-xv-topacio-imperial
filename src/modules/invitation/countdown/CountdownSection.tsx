@@ -1,7 +1,10 @@
 import React from 'react'
+import { CalendarPlusIcon } from '@phosphor-icons/react'
+import { useSaveTheDate } from '@/common/hooks'
 import { SectionHeader } from '@/common/components/section-header/SectionHeader'
 import { Countdown } from '@/common/components/countdown/Countdown'
 import { ScratchCard } from '@/common/components/scratch-card/ScratchCard'
+import { Button } from '@/common/components/button/Button'
 import { useCountdownSection } from './useCountdownSection'
 
 import decoration from '@/assets/images/icons/countdown-flowers-1.svg'
@@ -17,6 +20,7 @@ export const CountdownSection: React.FC = () => {
         yearStr,
         handleReveal,
     } = useCountdownSection()
+    const { downloadSaveTheDate } = useSaveTheDate()
 
     if (!countdownConfig?.showCountdown || !countdownConfig?.targetDate) {
         return null
@@ -113,6 +117,18 @@ export const CountdownSection: React.FC = () => {
                             </div>
                             <span className="countdown-section__box-label">Año</span>
                         </div>
+                    </div>
+
+                    <div className="countdown-section__button">
+                        <Button
+                            variant="secondary"
+                            radius="full"
+                            icon={<CalendarPlusIcon size={20} className="countdown-section__btn-icon" />}
+                            onClick={() => downloadSaveTheDate()}
+                            className="countdown-section__btn"
+                        >
+                            SAVE THE DATE
+                        </Button>
                     </div>
                 </div>
             </section>

@@ -41,8 +41,9 @@
     }
 
     &--secondary {
-        background-color: vars.$color-secondary;
-        color: #ffffff;
+        background-color: vars.$color-secondary-300;
+        color: vars.$color-tertiary-900;
+        font-weight: 700;
 
         &:hover:not(:disabled) {
             background-color: vars.$color-secondary-600;
