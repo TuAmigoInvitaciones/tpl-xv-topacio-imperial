@@ -9,6 +9,7 @@ import envelopeSvg from '@/assets/images/icons/envelope.svg'
 import selloSvg from '@/assets/images/icons/sello.svg'
 import photo7 from '@/assets/images/photos/7.jpg'
 import bg from '@/assets/images/backgrounds/bg-rsvp.svg'
+import flowersTickets from '@/assets/images/icons/flowers-tickets.svg'
 
 const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
 
@@ -120,6 +121,12 @@ export const RsvpSection: React.FC = () => {
                                         </Button>
                                     </motion.div>
                                 </div>
+                                <img
+                                    src={flowersTickets}
+                                    alt=""
+                                    className="rsvp__card-flowers"
+                                    aria-hidden="true"
+                                />
                             </div>
                         </motion.div>
                     </div>

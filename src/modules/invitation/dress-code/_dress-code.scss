@@ -1,1 +1,9 @@
-.dress-code {}
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.dress-code-section {
+    &__container {
+        padding: 3rem 0;
+        background-color: vars.$color-secondary-200;
+    }
+}

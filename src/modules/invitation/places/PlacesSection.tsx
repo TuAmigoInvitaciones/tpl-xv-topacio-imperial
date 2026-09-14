@@ -83,15 +83,25 @@ export const PlacesSection: React.FC = () => {
                                     </div>
 
                                     {idx === 0 && (
-                                        <div className="places-item__corner-flower places-item__corner-flower--top-left">
-                                            <img src={flowersCard1} alt="Decoración floral" />
-                                        </div>
+                                        <>
+                                            <div className="places-item__corner-flower places-item__corner-flower--top-left">
+                                                <img src={flowersCard1} alt="Decoración floral" />
+                                            </div>
+                                            <div className="places-item__corner-flower places-item__corner-flower--bottom-right places-item__corner-flower--rotated">
+                                                <img src={flowersCard1} alt="Decoración floral" />
+                                            </div>
+                                        </>
                                     )}
 
                                     {idx === 1 && (
-                                        <div className="places-item__corner-flower places-item__corner-flower--bottom-right">
-                                            <img src={flowersCard2} alt="Decoración floral" />
-                                        </div>
+                                        <>
+                                            <div className="places-item__corner-flower places-item__corner-flower--top-left places-item__corner-flower--rotated">
+                                                <img src={flowersCard2} alt="Decoración floral" />
+                                            </div>
+                                            <div className="places-item__corner-flower places-item__corner-flower--bottom-right">
+                                                <img src={flowersCard2} alt="Decoración floral" />
+                                            </div>
+                                        </>
                                     )}
 
                                     {loc.venue && (

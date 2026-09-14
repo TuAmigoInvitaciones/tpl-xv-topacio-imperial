@@ -2,7 +2,7 @@
 @use '../../../common/styles/mixins' as mix;
 
 .places-section {
-    padding: 10rem 0;
+    padding: 10rem 0 8rem;
 
     &__container {
         width: 90%;
@@ -117,8 +117,13 @@
             bottom: 0;
             right: 0;
         }
+
+        &--rotated {
+            transform: rotate(180deg);
+        }
     }
 
+    &__icon,
     &__venue,
     &__title,
     &__time,
