@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInvitationConfig } from '@/common/hooks'
+import familyFlowers from '@/assets/images/icons/family-flowers.svg'
+import photo from '@/assets/images/photos/9.jpg'
 
 const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
 
@@ -26,50 +28,56 @@ export const FamilySection: React.FC = () => {
             >
                 <div className="family-section__card-outer-border">
                     <div className="family-section__card-inner">
-                        <div className="family-section__flowers"></div>
+                        <div className="family-section__flowers">
+                            <img src={familyFlowers} alt="Flores" />
+                        </div>
 
                         <div className="family-section__text">
-                    <div className="family-section__group">
-                        <span className="family-section__pretitle">Con la bendición de</span>
-                        <h2 className="family-section__role">Mis Padres</h2>
-                        <div className="family-section__names">
-                            {parents.map((name, index) => (
-                                <React.Fragment key={index}>
-                                    <p className="family-section__name">{name}</p>
-                                    {index < parents.length - 1 && (
-                                        <span className="family-section__ampersand">&</span>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                            <div className="family-section__group">
+                                <span className="family-section__pretitle">Con la bendición de</span>
+                                <h2 className="family-section__role">Mis Padres</h2>
+                                <div className="family-section__names">
+                                    {parents.map((name, index) => (
+                                        <React.Fragment key={index}>
+                                            <p className="family-section__name">{name}</p>
+                                            {index < parents.length - 1 && (
+                                                <span className="family-section__ampersand">&</span>
+                                            )}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="family-section__divider">
+                                <p className="family-section__phrase">Y el cariño incondicional de</p>
+                            </div>
+
+                            <div className="family-section__group">
+                                <h2 className="family-section__role">Mis Padrinos</h2>
+                                <span className="family-section__role-subtitle">Padrinos de Honor</span>
+                                <div className="family-section__names">
+                                    {godparents.map((name, index) => (
+                                        <React.Fragment key={index}>
+                                            <p className="family-section__name">{name}</p>
+                                            {index < godparents.length - 1 && (
+                                                <span className="family-section__ampersand">&</span>
+                                            )}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="family-section__message">
+                                <p>Gracias por guiar mis pasos, celebrar mis sueños y acompañarme en este momento tan especial.</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="family-section__divider">
-                        <p className="family-section__phrase">Y el cariño incondicional de</p>
-                    </div>
-
-                    <div className="family-section__group">
-                        <h2 className="family-section__role">Mis Padrinos</h2>
-                        <span className="family-section__role-subtitle">Padrinos de Honor</span>
-                        <div className="family-section__names">
-                            {godparents.map((name, index) => (
-                                <React.Fragment key={index}>
-                                    <p className="family-section__name">{name}</p>
-                                    {index < godparents.length - 1 && (
-                                        <span className="family-section__ampersand">&</span>
-                                    )}
-                                </React.Fragment>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="family-section__message">
-                        <p>Gracias por guiar mis pasos, celebrar mis sueños y acompañarme en este momento tan especial.</p>
                     </div>
                 </div>
+            </motion.div>
+
+            <div className="family-section__photo">
+                <img src={photo} alt="Michelle Foto" />
             </div>
-        </div>
-    </motion.div>
-</section>
-)
+        </section>
+    )
 }

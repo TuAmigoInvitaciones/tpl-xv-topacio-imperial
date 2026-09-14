@@ -1,11 +1,13 @@
 @use '../../../common/styles/variables' as vars;
 
 .family-section {
-    padding: 10rem 0;
+    padding-top: 10rem;
     background-color: vars.$color-secondary-200;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10rem;
 
     &__container {
         position: relative;
@@ -58,17 +60,14 @@
         top: 0;
         left: 0;
         bottom: 0;
-        width: 38%;
+        height: 100%;
         pointer-events: none;
         z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
         img {
-            width: 100%;
+            width: auto;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             object-position: left center;
             display: block;
         }
@@ -79,7 +78,7 @@
         z-index: 2;
         margin-left: auto;
         width: 62%;
-        padding: 5.5rem 2.8rem 5.5rem 1rem;
+        padding: 5.5rem 2.8rem 5.5rem 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -182,6 +181,17 @@
             line-height: 1.55;
             color: #5c534b;
             margin: 0;
+        }
+    }
+
+    &__photo {
+        height: 45rem;
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
         }
     }
 }
