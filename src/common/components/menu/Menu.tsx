@@ -6,6 +6,8 @@ import { useMenu } from '@/common/hooks'
 import type { MenuProps } from '@/common/types'
 import { MenuSidebar } from './MenuSidebar'
 
+import decoration from '@/assets/images/icons/menu-flower.svg'
+
 export const Menu: React.FC<MenuProps> = (props) => {
     const {
         isMenuVisible,
@@ -32,7 +34,10 @@ export const Menu: React.FC<MenuProps> = (props) => {
                 </div>
             ) : (
                 <header className="menu menu--bar">
-                    <div className="menu__title">{activeTitle}</div>
+                    <div className="menu__box">
+                        <img className='menu__decoration' src={decoration} alt="" />
+                        <div className="menu__title">{activeTitle}</div>
+                    </div>
                     <Button
                         variant={activeBtnVariant}
                         radius="full"

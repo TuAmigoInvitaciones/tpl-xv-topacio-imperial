@@ -44,6 +44,16 @@
     }
 }
 
+.menu__box {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.menu__decoration {
+    width: 3rem;
+}
+
 .menu-overlay {
     position: fixed;
     inset: 0;
