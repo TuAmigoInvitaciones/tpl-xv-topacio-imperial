@@ -2,6 +2,186 @@
 @use '../../../common/styles/mixins' as mix;
 
 .gallery-section {
-    padding: 10rem 0;
+    padding: 10rem 0 12rem;
     background-color: vars.$color-secondary-200;
+    position: relative;
+    overflow: hidden;
+
+    &__container {
+        width: 90%;
+        max-width: 44rem;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__intro {
+        font-family: vars.$font-serif;
+        font-size: 1.45rem;
+        font-style: italic;
+        color: vars.$color-text-700;
+        text-align: center;
+        margin: -1rem auto 4.5rem;
+        max-width: 32rem;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+    }
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+        width: 100%;
+    }
+
+    // Cuadrícula 2x2 de las 4 fotos verticales
+    &__verticals {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem;
+        width: 100%;
+    }
+
+    // 1 foto horizontal de ancho completo debajo
+    &__horizontal {
+        width: 100%;
+    }
+
+    // Tarjeta de foto individual (Estilo editorial de lujo)
+    &__card {
+        position: relative;
+        border-radius: 0.4rem;
+        overflow: hidden;
+        cursor: pointer;
+        background: #ffffff;
+        padding: 0.4rem;
+        border: 1px solid rgba(vars.$color-3, 0.45);
+        box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.07),
+                    0 0.2rem 0.6rem rgba(0, 0, 0, 0.04);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            border-color: vars.$color-3;
+            box-shadow: 0 1.6rem 3.5rem rgba(0, 0, 0, 0.12),
+                        0 0 1.8rem rgba(vars.$color-3, 0.22);
+
+            .gallery-section__card-img {
+                transform: scale(1.06);
+            }
+
+            .gallery-section__card-overlay {
+                opacity: 1;
+            }
+        }
+    }
+
+    // 4 Tarjetas verticales (aspect-ratio 3 / 4)
+    &__card--vertical {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        display: flex;
+        flex-direction: column;
+    }
+
+    // 1 Tarjeta horizontal debajo (aspect-ratio 16 / 10)
+    &__card--horizontal {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        overflow: hidden;
+        border-radius: 0.2rem;
+        background: #f7f4ee;
+    }
+
+    &__card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &__card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(20, 16, 12, 0.75) 0%,
+            rgba(20, 16, 12, 0.25) 50%,
+            transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        z-index: 2;
+    }
+
+    &__card-zoom-icon {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.85);
+        color: vars.$color-tertiary-800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(4px);
+    }
+
+    &__card-caption {
+        font-family: vars.$font-serif;
+        font-size: 1.3rem;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 0.04em;
+        text-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.6);
+        margin: 0;
+    }
+}
+
+// ── Modal de Ampliación de Foto (Integrado al Modal Master) ──────────────────────
+.gallery-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &__img-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.4rem;
+        overflow: hidden;
+        border: 1px solid rgba(vars.$color-3, 0.4);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+        background-color: #000000;
+    }
+
+    &__img {
+        width: 100%;
+        max-height: 68vh;
+        max-height: 68dvh;
+        object-fit: contain;
+        display: block;
+    }
 }

@@ -7,6 +7,7 @@ export const MODAL_NAMES = {
     ticket: 'ticket',
     tables: 'tables',
     graduates: 'graduates',
+    gallery: 'gallery',
 } as const
 
 export type ModalName = typeof MODAL_NAMES[keyof typeof MODAL_NAMES];
