@@ -1,0 +1,9 @@
+@use 'sass:color';
+
+@function tint($color, $percentage) {
+    @return color.mix(#ffffff, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return color.mix(#000000, $color, $percentage);
+}

@@ -1,12 +1,4 @@
-@use 'sass:color';
-
-@function tint($color, $percentage) {
-    @return color.mix(#ffffff, $color, $percentage);
-}
-
-@function shade($color, $percentage) {
-    @return color.mix(#000000, $color, $percentage);
-}
+@use './variables' as vars;
 
 @mixin difuminatedGradient($color: #ffffff,
     $height: 25%,
@@ -141,4 +133,14 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+}
+
+@mixin generalText {
+    font-family: vars.$font-serif;
+    font-size: 1.6rem;
+    color: #524a46;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    margin: 0;
 }

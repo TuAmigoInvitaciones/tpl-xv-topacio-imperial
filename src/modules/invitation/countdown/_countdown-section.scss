@@ -39,12 +39,8 @@
     }
 
     &__instruction {
-        text-align: center;
-        font-family: vars.$font-serif;
-        font-size: 1.6rem;
+        @include mix.generalText;
         line-height: 1.6;
-        max-width: 46rem;
-        margin: 1.6rem auto 0 auto;
     }
 
     &__date {
