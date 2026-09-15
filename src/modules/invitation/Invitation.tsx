@@ -40,9 +40,9 @@ export const Invitation: React.FC = () => {
             <DressCodeSection />
             <ItinerarySection />
             <GallerySection />
-            <DetailsSection />
-            <GuestPhotosSection />
             <PresentsSection />
+            <GuestPhotosSection />
+            <DetailsSection />
             <ConfirmationSection />
             <FarewellSection />
 

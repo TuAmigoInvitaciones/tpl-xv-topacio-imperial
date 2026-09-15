@@ -34,6 +34,9 @@ const getAmenityIcon = (event: string, index: number) => {
     return defaultIcons[index % defaultIcons.length]
 }
 
+const EASE_LUXURY = [0.16, 1, 0.3, 1] as const
+const FLUID_EASE = [0.25, 0.46, 0.45, 0.94] as const
+
 export const ItinerarySection: React.FC = () => {
     const { sections } = useInvitationConfig()
     const itineraryConfig = sections.itinerary
@@ -47,10 +50,10 @@ export const ItinerarySection: React.FC = () => {
             <div className="itinerary-section__container">
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-10% 0px' }}
-                    transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 0.9, ease: FLUID_EASE }}
                 >
                     <SectionHeader
                         pretitle="Cronograma"
@@ -60,7 +63,14 @@ export const ItinerarySection: React.FC = () => {
                 </motion.div>
 
                 <div className="itinerary-section__timeline">
-                    <div className="itinerary-section__line" />
+                    <motion.div
+                        className="itinerary-section__line"
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: '-5% 0px' }}
+                        style={{ originY: 0 }}
+                        transition={{ duration: 1.2, ease: EASE_LUXURY }}
+                    />
 
                     {itineraryConfig.itinerary.map((item, index) => {
                         const icon = getAmenityIcon(item.event, index)
@@ -68,30 +78,50 @@ export const ItinerarySection: React.FC = () => {
                             <motion.div
                                 key={index}
                                 className="itinerary-item"
-                                initial={{ opacity: 0, x: -24 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: '-8% 0px' }}
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-6% 0px' }}
                                 transition={{
                                     duration: 0.75,
-                                    delay: index * 0.08,
-                                    ease: [0.25, 0.46, 0.45, 0.94],
+                                    delay: index * 0.1,
+                                    ease: FLUID_EASE,
                                 }}
                             >
                                 {/* Ícono de la amenidad */}
                                 <div className="itinerary-item__icon-wrapper">
-                                    <div className="itinerary-item__icon-placeholder">
+                                    <motion.div
+                                        className="itinerary-item__icon-placeholder"
+                                        initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+                                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            duration: 0.65,
+                                            delay: index * 0.1 + 0.1,
+                                            ease: EASE_LUXURY,
+                                        }}
+                                    >
                                         {icon && <img src={icon} alt={item.event} className="itinerary-item__icon-img" />}
-                                    </div>
+                                    </motion.div>
                                 </div>
 
                                 {/* Punto de la línea */}
                                 <div className="itinerary-item__dot" />
 
                                 {/* Contenido */}
-                                <div className="itinerary-item__content">
+                                <motion.div
+                                    className="itinerary-item__content"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.65,
+                                        delay: index * 0.1 + 0.15,
+                                        ease: FLUID_EASE,
+                                    }}
+                                >
                                     <span className="itinerary-item__time">{item.time}</span>
                                     <p className="itinerary-item__event">{item.event}</p>
-                                </div>
+                                </motion.div>
                             </motion.div>
                         )
                     })}
@@ -99,9 +129,15 @@ export const ItinerarySection: React.FC = () => {
 
 
             </div>
-            <div className="itinerary-section__decoration">
+            <motion.div
+                className="itinerary-section__decoration"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-5% 0px' }}
+                transition={{ duration: 1.0, ease: EASE_LUXURY }}
+            >
                 <img src={decoration} alt="decoration" />
-            </div>
+            </motion.div>
         </section>
     )
 }
