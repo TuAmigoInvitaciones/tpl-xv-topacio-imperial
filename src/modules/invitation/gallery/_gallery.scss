@@ -1,1 +1,7 @@
-.gallery {}
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.gallery-section {
+    padding: 10rem 0;
+    background-color: vars.$color-secondary-200;
+}

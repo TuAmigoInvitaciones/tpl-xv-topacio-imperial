@@ -1,1 +1,128 @@
-.itinerary {}
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.itinerary-section {
+    padding: 8rem 0 0;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    &__container {
+        width: 90%;
+        max-width: 44rem;
+        margin: 0 auto;
+    }
+
+    &__timeline {
+        position: relative;
+        margin: 5rem auto 0;
+        width: 100%;
+        max-width: 35rem;
+        padding-left: 0;
+    }
+
+    &__line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 9.25rem;
+        width: 1px;
+        border-left: 2px dashed rgba(vars.$color-3, 0.45);
+        z-index: 0;
+    }
+
+    &__decoration {
+        width: 100%;
+        line-height: 0;
+        margin-top: -2rem;
+        pointer-events: none;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}
+
+.itinerary-item {
+    display: grid;
+    grid-template-columns: 8.5rem 1.5rem 1fr;
+    align-items: center;
+    padding: 2.4rem 0;
+    position: relative;
+
+    &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10.5rem;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right,
+                rgba(vars.$color-3, 0.2),
+                transparent);
+    }
+
+    &__icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__icon-placeholder {
+        width: 8rem;
+        height: 8rem;
+        background: rgba(vars.$color-3, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        padding: 1rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all 0.25s ease, border-color 0.25s ease;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        &:empty::after {
+            content: '+';
+            font-size: 1.8rem;
+            color: rgba(vars.$color-3, 0.4);
+            line-height: 1;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding-left: 2rem;
+    }
+
+    &__time {
+        font-family: vars.$font-serif;
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: vars.$color-tertiary-800;
+        letter-spacing: 0.04em;
+        line-height: 1.1;
+    }
+
+    &__event {
+        font-family: vars.$font-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: vars.$color-text-700;
+        line-height: 1.4;
+        margin: 0;
+    }
+}
