@@ -17,7 +17,6 @@ export const PresentsSection: React.FC = () => {
                     pretitle="Sugerencia de Regalos"
                     title={presentsConfig.title || 'Mesa de Regalos'}
                     align="center"
-                    variant="uppercase"
                 />
 
                 <div className="presents-section__content">

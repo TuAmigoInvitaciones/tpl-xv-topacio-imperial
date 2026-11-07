@@ -1,4 +1,6 @@
 @use '../../../common/styles/variables' as vars;
 @use '../../../common/styles/mixins' as mix;
 
-.presents {}
+.presents-section {
+    padding: 10rem 0;
+}
