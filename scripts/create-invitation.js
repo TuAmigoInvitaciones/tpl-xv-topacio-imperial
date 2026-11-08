@@ -47,7 +47,7 @@ async function main() {
         const setup = await promptProjectSetup()
         const packageData = await promptPackageSelection(setup.eventType)
         const themeAndUi = await promptThemeAndUI(
-            'MarÃ­a & Carlos',
+            'Marí­a & Carlos',
             packageData.packageTier !== 'esmeralda'
         )
         const heroData = await promptHero(packageData.eventType)
@@ -155,19 +155,19 @@ async function main() {
         // 2. Escribir invitation.config.json
         const configPath = path.join(targetPath, 'invitation.config.json')
         fs.writeFileSync(configPath, JSON.stringify(finalConfigManifest, null, 2), 'utf-8')
-        console.log(`\n${pc.green('âœ… Archivo invitation.config.json generado exitosamente.')}`)
+        console.log(`\n${pc.green('...Archivo invitation.config.json generado exitosamente.')}`)
 
         // 3. Sincronizar tokens SCSS del tema
         try {
-            console.log(pc.cyan('ðŸŽ¨ Compilando tokens SCSS del tema en la nueva invitaciÃ³n...'))
+            console.log(pc.cyan('... Compilando tokens SCSS del tema en la nueva invitaciÃ³n...'))
             execSync('node scripts/sync-theme.js', { cwd: targetPath, stdio: 'inherit' })
         } catch (e) {
-            console.warn(pc.yellow('âš ï¸ Nota: Recuerda ejecutar npm run theme:sync en la carpeta generada.'))
+            console.warn(pc.yellow('... Nota: Recuerda ejecutar npm run theme:sync en la carpeta generada.'))
         }
 
-        printHeader('Â¡PROYECTO DE INVITACIÃ“N CREADO Y CONFIGURADO CON Ã‰XITO!')
-        console.log(`ðŸ“Œ ${pc.bold('Tipo de Evento:')} ${packageData.eventType.toUpperCase()} (${packageData.packageTier})`)
-        console.log(`ðŸ“Œ ${pc.bold('UbicaciÃ³n:')} ${targetPath}\n`)
+        printHeader('¡PROYECTO DE INVITACIÓN CREADO Y CONFIGURADO CON ÉXITO!')
+        console.log(`${pc.bold('Tipo de Evento:')} ${packageData.eventType.toUpperCase()} (${packageData.packageTier})`)
+        console.log(`${pc.bold('Ubicación:')} ${targetPath}\n`)
         console.log('Para iniciar el proyecto ejecuta:\n')
         console.log(`   cd "${targetPath}"`)
         console.log('   npm install')
