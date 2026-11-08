@@ -73,7 +73,7 @@ export const ItinerarySection: React.FC = () => {
                     />
 
                     {itineraryConfig.itinerary.map((item, index) => {
-                        const icon = getAmenityIcon(item.event, index)
+                        const icon = getAmenityIcon(item.event ?? '', index)
                         return (
                             <motion.div
                                 key={index}
