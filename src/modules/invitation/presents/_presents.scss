@@ -2,5 +2,351 @@
 @use '../../../common/styles/mixins' as mix;
 
 .presents-section {
-    padding: 10rem 0;
+    padding: 8rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+
+    &__container {
+        width: 90%;
+        max-width: 72rem;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__description {
+        @include mix.generalText;
+        text-align: center;
+        max-width: 56rem;
+        margin: -1.5rem auto 4.5rem;
+        color: #5c534b;
+        line-height: 1.75;
+    }
+
+    &__accordion-wrapper {
+        width: 100%;
+        max-width: 64rem;
+        margin: 0 auto;
+
+        // Customización del componente Accordion con el doble borde sutil de FamilySection
+        .accordion--separated {
+            gap: 2.2rem;
+
+            .accordion__item {
+                position: relative;
+                overflow: hidden;
+                border: none;
+                border-radius: 0;
+                background:
+                    radial-gradient(circle at 50% 25%,
+                        rgba(255, 255, 255, 0.98) 0%,
+                        rgba(253, 250, 245, 0.82) 100%),
+                    linear-gradient(155deg, #ffffff 0%, #faf8f5 100%);
+                box-shadow:
+                    0 1.8rem 4.5rem rgba(0, 0, 0, 0.08),
+                    0 0.4rem 1.4rem rgba(0, 0, 0, 0.04),
+                    inset 0 0 0 0.1rem rgba(255, 255, 255, 0.9);
+                transition:
+                    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+                // Primer marco dorado exterior (igual a family-section__outer-border)
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0.4rem;
+                    border: 0.1rem solid rgba(197, 160, 89, 0.5);
+                    pointer-events: none;
+                    z-index: 3;
+                    transition: border-color 0.35s ease;
+                }
+
+                // Segundo marco dorado interior (igual a family-section__inner-border)
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0.8rem;
+                    border: 0.1rem solid rgba(197, 160, 89, 0.75);
+                    pointer-events: none;
+                    z-index: 3;
+                    transition: border-color 0.35s ease;
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow:
+                        0 2.2rem 5rem rgba(0, 0, 0, 0.1),
+                        0 0.6rem 1.8rem rgba(0, 0, 0, 0.05),
+                        inset 0 0 0 0.1rem rgba(255, 255, 255, 0.95);
+
+                    &::before {
+                        border-color: rgba(197, 160, 89, 0.65);
+                    }
+
+                    &::after {
+                        border-color: rgba(197, 160, 89, 0.9);
+                    }
+                }
+
+                &--expanded,
+                &--open {
+                    box-shadow:
+                        0 2rem 4.8rem rgba(0, 0, 0, 0.09),
+                        0 0.5rem 1.6rem rgba(0, 0, 0, 0.04),
+                        inset 0 0 0 0.1rem rgba(255, 255, 255, 0.95);
+
+                    .accordion__header {
+                        background-color: rgba(vars.$color-secondary-200, 0.28);
+                        border-bottom: 0.1rem solid rgba(197, 160, 89, 0.25);
+                    }
+
+                    .accordion__icon {
+                        background-color: vars.$color-secondary-300;
+                        color: vars.$color-tertiary-900;
+                        border-color: rgba(197, 160, 89, 0.55);
+                        transform: scale(1.05);
+                    }
+                }
+            }
+
+            .accordion__header {
+                margin: 0.8rem 0.8rem 0;
+                width: calc(100% - 1.6rem);
+                padding: 1.4rem 2rem;
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+
+                &:hover:not(:disabled) {
+                    background-color: rgba(vars.$color-secondary-200, 0.22);
+                }
+            }
+
+            .accordion__title-container {
+                gap: 1.4rem;
+
+                >span:not(.accordion__icon) {
+                    font-family: vars.$font-cursive;
+                    font-size: 1.8rem;
+                    letter-spacing: 0.04em;
+                    color: #1c1917;
+
+                    @include mix.respond-to('sm') {
+                        font-size: 2.3rem;
+                    }
+                }
+            }
+
+            .accordion__icon {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                background-color: rgba(vars.$color-secondary-200, 0.45);
+                border: 0.1rem solid rgba(197, 160, 89, 0.38);
+                color: #8c6d32;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .accordion__title {
+                font-family: vars.$font-serif;
+                font-size: 1.4rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                color: #1c1917;
+
+                @include mix.respond-to('sm') {
+                    font-size: 2.3rem;
+                }
+            }
+
+            .accordion__chevron {
+                width: 3.4rem;
+                height: 3.4rem;
+                border-radius: 50%;
+                background-color: rgba(197, 160, 89, 0.12);
+                color: #8c6d32;
+            }
+
+            .accordion__body,
+            .accordion__content {
+                position: relative;
+                overflow: hidden;
+                margin: 0 0.8rem 0.8rem;
+                padding: 2.4rem 2rem 3.2rem;
+
+                @include mix.respond-to('sm') {
+                    padding: 2.8rem 3.2rem 3.6rem;
+                }
+            }
+        }
+    }
+
+    &__accordion-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2.2rem;
+        position: relative;
+        z-index: 2;
+
+        &--envelope {
+            padding: 0.6rem 0;
+        }
+    }
+
+    &__card-flower {
+        &--center {
+            margin-bottom: -2rem;
+        }
+    }
+
+    &__card-flor {
+        position: absolute;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        width: 9rem;
+        height: auto;
+
+        @include mix.respond-to('sm') {
+            width: 13.5rem;
+        }
+
+        &--bottom-right {
+            bottom: -3.4rem;
+            right: -2rem;
+        }
+
+        &--top-left {
+            top: -3.4rem;
+            left: -3.2rem;
+        }
+    }
+
+    &__card-text {
+        @include mix.generalText;
+        font-size: 1.55rem;
+        line-height: 1.1;
+        color: #5c534b;
+        max-width: 50rem;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__card-action {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.4rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__card-button {
+        min-width: 22rem;
+    }
+
+    // ── Bloque de Datos Bancarios ─────────────────────────────────────────────
+    &__bank-info {
+        width: 100%;
+        max-width: 48rem;
+        background: rgba(vars.$color-secondary-200, 0.22);
+        border: 0.1rem solid rgba(197, 160, 89, 0.32);
+        padding: 1.8rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        position: relative;
+        z-index: 1;
+
+        @include mix.respond-to('sm') {
+            padding: 2.2rem 2.8rem;
+        }
+    }
+
+    &__bank-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        padding-bottom: 1.1rem;
+        border-bottom: 0.1rem dashed rgba(197, 160, 89, 0.3);
+
+        @include mix.respond-to('sm') {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+            gap: 1.5rem;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        &--clabe {
+            padding-top: 0.4rem;
+
+            @include mix.respond-to('sm') {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    }
+
+    &__bank-label {
+        font-family: vars.$font-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #786f66;
+    }
+
+    &__bank-value {
+        font-family: vars.$font-serif;
+        font-size: 1.65rem;
+        font-weight: 600;
+        color: #1c1917;
+        word-break: break-word;
+
+        &--clabe {
+            font-family: vars.$font-sans;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: vars.$color-tertiary-800;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.7rem 1.4rem;
+            border: 0.1rem solid rgba(197, 160, 89, 0.38);
+            user-select: all;
+
+            @include mix.respond-to('sm') {
+                font-size: 1.7rem;
+                letter-spacing: 0.13em;
+            }
+        }
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+
+        &--bottom {
+            margin: 5rem auto 0;
+            width: 85%;
+            max-width: 38rem;
+            position: relative;
+            z-index: 1;
+        }
+    }
 }

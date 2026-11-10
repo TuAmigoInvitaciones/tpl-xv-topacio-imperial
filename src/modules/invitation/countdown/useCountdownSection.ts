@@ -108,8 +108,8 @@ export const useCountdownSection = () => {
 
     const targetDateObj = countdownConfig?.targetDate ? new Date(countdownConfig.targetDate) : null
     const dayStr = targetDateObj && !isNaN(targetDateObj.getTime()) ? String(targetDateObj.getDate()).padStart(2, '0') : '26'
-    const monthStr = targetDateObj && !isNaN(targetDateObj.getTime()) ? String(targetDateObj.getMonth() + 1).padStart(2, '0') : '12'
-    const yearStr = targetDateObj && !isNaN(targetDateObj.getTime()) ? String(targetDateObj.getFullYear()).slice(-2) : '26'
+    const monthStr = targetDateObj && !isNaN(targetDateObj.getTime()) ? String(targetDateObj.getMonth() + 1).padStart(2, '0') : '03'
+    const yearStr = targetDateObj && !isNaN(targetDateObj.getTime()) ? String(targetDateObj.getFullYear()).slice(-2) : '27'
 
     return {
         sectionRef,

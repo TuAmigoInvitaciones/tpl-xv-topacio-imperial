@@ -111,7 +111,7 @@ export const RsvpSection: React.FC = () => {
                                         transition={{ duration: 0.8, delay: 0.92, ease: EASE_LUXURY }}
                                     >
                                         <Button
-                                            variant="secondary"
+                                            variant="tertiary"
                                             size="md"
                                             radius="full"
                                             icon={<LinkIcon size={20} weight='thin' />}

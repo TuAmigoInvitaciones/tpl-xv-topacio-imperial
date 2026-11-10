@@ -114,7 +114,7 @@ export const PlacesSection: React.FC = () => {
                                             <Button
                                                 icon={<MapPinIcon size={20} weight="thin" />}
                                                 radius="full"
-                                                variant='secondary'
+                                                variant='tertiary'
                                                 onClick={() => window.open(loc.url, '_blank')}
                                                 className="places-item__button"
                                             >

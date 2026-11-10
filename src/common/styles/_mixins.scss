@@ -115,7 +115,7 @@
 }
 
 @mixin respond-to($breakpoint) {
-    @include respondTo($breakpoint) {
+    @include respondToMin($breakpoint) {
         @content;
     }
 }

@@ -42,7 +42,7 @@
       "showHero": true,
       "names": "Michelle Carreón",
       "subtitle": "Mis XV Años",
-      "date": "27 DE DICIEMBRE DE 2026",
+      "date": "15 DE MARZO DE 2027",
       "city": "Aguascalientes, México"
     },
     "scratchReveal": {
@@ -55,7 +55,7 @@
     },
     "countdown": {
       "showCountdown": true,
-      "targetDate": "2026-12-27T18:00:00"
+      "targetDate": "2027-03-15T18:00:00"
     },
     "family": {
       "showFamily": true,
@@ -149,7 +149,7 @@
     },
     "presents": {
       "showPresents": true,
-      "title": "Mesa de Regalos",
+      "title": "Sugerencia de regalos",
       "url": "https://mesaderegalos.liverpool.com.mx",
       "bankDetails": {
         "bank": "BBVA",

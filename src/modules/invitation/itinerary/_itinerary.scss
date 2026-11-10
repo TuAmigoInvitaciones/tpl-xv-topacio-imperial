@@ -3,6 +3,7 @@
 
 .itinerary-section {
     padding: 8rem 0 0;
+    background-color: #ffffff;
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -36,6 +37,7 @@
         line-height: 0;
         margin-top: -2rem;
         pointer-events: none;
+        mix-blend-mode: multiply;
 
         img {
             width: 100%;

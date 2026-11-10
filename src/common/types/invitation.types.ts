@@ -179,6 +179,7 @@ export interface SectionsConfig {
     presents?: SectionItemConfig & {
         showPresents?: boolean
         title?: string
+        description?: string
         url?: string
         bankDetails?: {
             bank?: string

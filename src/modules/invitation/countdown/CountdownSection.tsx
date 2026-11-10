@@ -12,6 +12,7 @@ import decoration2 from '@/assets/images/icons/countdown-flowers-2.svg'
 import photo from '@/assets/images/photos/8.jpg'
 
 export const CountdownSection: React.FC = () => {
+
     const {
         sectionRef,
         countdownConfig,
@@ -20,6 +21,7 @@ export const CountdownSection: React.FC = () => {
         yearStr,
         handleReveal,
     } = useCountdownSection()
+
     const { downloadSaveTheDate } = useSaveTheDate()
 
     if (!countdownConfig?.showCountdown || !countdownConfig?.targetDate) {
@@ -30,17 +32,11 @@ export const CountdownSection: React.FC = () => {
         <>
             <section id="countdown" ref={sectionRef} className="countdown-section">
                 <div className="countdown-section__decoration countdown-section__decoration--1">
-                    <img
-                        src={decoration}
-                        alt="Decoración"
-                    />
+                    <img src={decoration} alt="Decoración" />
                 </div>
 
                 <div className="countdown-section__decoration countdown-section__decoration--2">
-                    <img
-                        src={decoration2}
-                        alt="Decoración"
-                    />
+                    <img src={decoration2} alt="Decoración" />
                 </div>
 
                 <div className="countdown-section__container">
@@ -90,7 +86,7 @@ export const CountdownSection: React.FC = () => {
                                     onReveal={() => handleReveal('month')}
                                 >
                                     <div className="countdown-section__card-content">
-                                        <span className="countdown-section__number">{(monthStr === '12') ? 'DIC' : monthStr}</span>
+                                        <span className="countdown-section__number">{(monthStr === '03') ? 'MAR' : monthStr}</span>
                                     </div>
                                 </ScratchCard>
                             </div>
@@ -121,7 +117,7 @@ export const CountdownSection: React.FC = () => {
 
                     <div className="countdown-section__button">
                         <Button
-                            variant="secondary"
+                            variant="tertiary"
                             radius="full"
                             icon={<CalendarPlusIcon size={20} weight='thin' className="countdown-section__btn-icon" />}
                             onClick={() => downloadSaveTheDate()}
